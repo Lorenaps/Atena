@@ -3,7 +3,7 @@ package br.com.tebd.atena.entity;
 import java.util.Date;
 
 public class Congresso {
-	private Long id;
+	private Integer id;
 	private String nome;
 	private String endereco;
 	private Date dataInicio;
@@ -11,10 +11,10 @@ public class Congresso {
 	private Date dataInicioSubmissaoArtigos;
 	private Date dataFinalSubmissaoArtigos;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public String getNome() {

@@ -1,16 +1,16 @@
 package br.com.tebd.atena.entity;
 
 public class Artigo {
-	private Long id;
+	private Integer id;
 	private Integer numSubmissao;
 	private String titulo;
 	private String resumo;
 	private Integer nota;
 	
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	public Integer getNumSubmissao() {
