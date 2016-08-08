@@ -7,6 +7,7 @@ public class CadastrarParticipanteService {
 	private IParticipanteDAO participanteDAO;
 	
 	public void cadastrar(Participante participante){
-		this.participanteDAO.salvarParticipante(participante);
+		System.out.println(participante.getNome());
+		//this.participanteDAO.salvarParticipante(participante);
 	}
 }

@@ -7,6 +7,7 @@ public class Participante {
 	private String email;
 	private String endereco;
 	private String cpf;
+	private boolean revisor;
 	private Integer numInscricao;
 	private Integer tipo;
 	
@@ -45,6 +46,12 @@ public class Participante {
 	}
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
+	}
+	public boolean isRevisor() {
+		return revisor;
+	}
+	public void setRevisor(boolean revisor) {
+		this.revisor = revisor;
 	}
 	public Integer getNumInscricao() {
 		return numInscricao;
