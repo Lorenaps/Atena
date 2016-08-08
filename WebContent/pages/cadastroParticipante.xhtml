@@ -19,22 +19,22 @@
 
 				<h:outputLabel value="Nome Completo: " for="nomeCompleto" />
 				<p:inputText id="nomeCompleto"
-					value="#{cadastroParticipanteMB.participante.nome}" required="true" />
+					value="#{cadastroParticipanteMB.participante.nome}" required="true" disabled="#{cadastroParticipanteMB.consulta}"/>
 				<h:outputLabel value="CPF: " for="cpf" />
 				<p:inputText id="cpf"
-					value="#{cadastroParticipanteMB.participante.cpf}" />
+					value="#{cadastroParticipanteMB.participante.cpf}" disabled="#{cadastroParticipanteMB.consulta}"/>
 				<h:outputLabel value="Telefone: " for="telefone" />
 				<p:inputText id="telefone"
-					value="#{cadastroParticipanteMB.participante.telefone}" />
+					value="#{cadastroParticipanteMB.participante.telefone}" disabled="#{cadastroParticipanteMB.consulta}"/>
 				<p:outputLabel value="Endereço: " for="endereco" />
 				<p:inputText id="endereco"
-					value="#{cadastroParticipanteMB.participante.endereco}" />
+					value="#{cadastroParticipanteMB.participante.endereco}" disabled="#{cadastroParticipanteMB.consulta}"/>
 				<p:outputLabel value="E-mail: " for="email" />
 				<p:inputText id="email"
-					value="#{cadastroParticipanteMB.participante.email}" />
+					value="#{cadastroParticipanteMB.participante.email}" disabled="#{cadastroParticipanteMB.consulta}"/>
 				<h:outputLabel value="Revisor? " for="revisor"/>
 				<p:selectBooleanCheckbox id="revisor"
-					value="#{cadastroParticipanteMB.participante.revisor}" />
+					value="#{cadastroParticipanteMB.participante.revisor}" disabled="#{cadastroParticipanteMB.consulta}"/>
 			</h:panelGrid>
 			<h:panelGrid style="margin-top:20px" columns="2">
 				<p:commandButton value="Cadastrar"
