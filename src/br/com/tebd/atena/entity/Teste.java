@@ -79,15 +79,33 @@ public class Teste {
 	public static void testaParticipante(){
 		ParticipanteDAO t = new ParticipanteDAO();
 		ArrayList<Participante> e = new ArrayList<>();
-		e = t.listarTodos();
-			
-		for(int i=0; i< e.size();i++){
-			System.out.println(e.get(i).getNome());
-		}
+		Participante p = new Participante();
+		Congresso c = new Congresso();
+		c.setId(1);
+		
+		p.setNome("Daniel");
+		p.setTelefone("(21)367498");
+		p.setCpf("12345678999");
+		p.setEmail("Daniel@gmail.com");
+		p.setRevisor(true);
+		p.setEndereco("Rua de cima N 10");
+		p.setNumInscricao(70001);
+		p.setCongresso(c);
+		
+		Municipio m = new Municipio();
+		m.setId(30);
+		
+		p.setMunicipio(m);
+		
+		if(t.salvarParticipante(p))
+			System.out.println("Cadastro com Sucesso");
+		else
+			System.out.println("Erro no cadastro");
+
 	}
 
 	public static void main(String[] args) {
-		testaInstituicao();
+		testaParticipante();
 	}
 	
 

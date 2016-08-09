@@ -31,9 +31,14 @@ public class InstituicaoDAO implements IInstituicaoDAO{
 	                instituicao.setSigla(result.getString("SIGLA_INSTITUICAO"));
 	                
 	                Municipio m = new Municipio();
+	                MunicipioDAO mDao = new MunicipioDAO();
+
 	                m.setId(result.getInt("MUNICIPIO_ID_FK"));
-	                //MunicipioDAO mDao = new MunicipioDAO(); erro
-	                //instituicao.setMunicipio(mDao.listarPorId(m));
+	                
+	                m = mDao.listarPorId(m);
+	                
+	                instituicao.setMunicipio(m);
+	                
 	                instituicoes.add(instituicao);
 	            }
 	            result.close();

@@ -44,7 +44,6 @@ public class Conexao {
        try{
          // executa um comando select e recebe o retorno no resultset
          return stm.executeQuery(sql);
-
         }
         catch (SQLException e){
            return null;
