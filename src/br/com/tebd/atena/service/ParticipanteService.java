@@ -10,8 +10,8 @@ public class ParticipanteService {
 		System.out.println(participante.getNome());
 		//this.participanteDAO.salvarParticipante(participante);
 	}
-	
-	public Participante buscarParticipantePorCPF(String cpf){
-		return this.participanteDAO.buscarParticipantePorCPF(cpf);
+		
+	public Participante buscarParticipantePorNumInscricao(String numInscricao){
+		return this.participanteDAO.buscarParticipantePorNumInscricao(numInscricao);
 	}
 }

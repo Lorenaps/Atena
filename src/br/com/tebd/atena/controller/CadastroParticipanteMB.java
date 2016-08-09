@@ -45,8 +45,7 @@ public class CadastroParticipanteMB {
 	public void consultaListener(ActionEvent evt){
 		this.consulta = true;
 		String num = (String)evt.getComponent().getAttributes().get("inscricao");
-		System.out.println(num);
 		//this.participante.setCpf(num);
-		//this.participante = this.ps.buscarParticipantePorCPF(c);
+		this.participante = this.ps.buscarParticipantePorNumInscricao(num);
 	}
 }

@@ -146,12 +146,4 @@ public class ParticipanteDAO implements IParticipanteDAO{
         }        
     return null;
 	}
-
-	@Override
-	public Participante buscarParticipantePorCPF(String cpf) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
 }

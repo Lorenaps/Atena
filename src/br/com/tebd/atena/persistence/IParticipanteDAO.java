@@ -6,7 +6,6 @@ import br.com.tebd.atena.entity.Participante;
 
 public interface IParticipanteDAO {
 	public Participante buscarParticipantePorNumInscricao(String numInscricao);
-	public Participante buscarParticipantePorCPF(String cpf);
 	public ArrayList<Participante> listarTodos();
 	public boolean salvarParticipante(Participante participante);
 	public boolean alterarParticipante(Participante participante); 
