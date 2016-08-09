@@ -14,6 +14,7 @@ public class Participante {
 	private Congresso congresso;
 	private Municipio municipio;
 	private ArrayList<AreaConhecimento> areasConhecimento;
+	private ArrayList<VinculoParticipanteInstituicao> vinculos;
 	
 	public Integer getId() {
 		return id;
@@ -80,6 +81,12 @@ public class Participante {
 	}
 	public void setMunicipio(Municipio municipio) {
 		this.municipio = municipio;
+	}
+	public ArrayList<VinculoParticipanteInstituicao> getVinculos() {
+		return vinculos;
+	}
+	public void setVinculos(ArrayList<VinculoParticipanteInstituicao> vinculos) {
+		this.vinculos = vinculos;
 	}
 	
 }

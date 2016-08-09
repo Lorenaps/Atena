@@ -6,4 +6,6 @@ import br.com.tebd.atena.entity.AreaConhecimento;
 
 public interface IAreaConhecimentoDAO {
 	public ArrayList<AreaConhecimento> listarTodas();
+	public AreaConhecimento listarPorId(Integer id);
+
 }

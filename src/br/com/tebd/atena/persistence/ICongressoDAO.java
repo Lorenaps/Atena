@@ -5,5 +5,5 @@ import java.util.ArrayList;
 import br.com.tebd.atena.entity.Congresso;
 
 public interface ICongressoDAO {
-	public ArrayList<Congresso> listarTodos();
+	public Congresso listarTodos();
 }

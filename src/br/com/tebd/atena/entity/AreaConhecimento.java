@@ -2,7 +2,7 @@ package br.com.tebd.atena.entity;
 
 public class AreaConhecimento {
 	private Integer id;
-	private Integer codigo;
+	private String codigo;
 	private String nome;
 	
 	public Integer getId() {
@@ -11,10 +11,10 @@ public class AreaConhecimento {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Integer getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
-	public void setCodigo(Integer cod) {
+	public void setCodigo(String cod) {
 		this.codigo = cod;
 	}
 	public String getNome() {
