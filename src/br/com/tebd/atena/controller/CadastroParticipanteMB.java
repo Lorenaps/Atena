@@ -47,5 +47,6 @@ public class CadastroParticipanteMB {
 		String num = (String)evt.getComponent().getAttributes().get("inscricao");
 		//this.participante.setCpf(num);
 		this.participante = this.ps.buscarParticipantePorNumInscricao(num);
+		System.out.println(this.participante.getNome() + "1");
 	}
 }

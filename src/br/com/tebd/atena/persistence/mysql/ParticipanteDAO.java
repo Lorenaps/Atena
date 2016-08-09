@@ -23,13 +23,11 @@ public class ParticipanteDAO implements IParticipanteDAO{
 		        + "'" + p.getEmail() + "',"
 		        + "'" + p.getEndereco() + "',"
 		        + "'" + p.getCpf() + "',"
-		        + p.getNumInscricao() + ","
+		        + "80000" + ","
 		        + p.isRevisor() + ","
-		        + p.getMunicipio().getId()+ ","
-		        + p.getCongresso().getId()+");";
-
+		        + "300" + ","
+		        + "1" +");";
         
-        System.out.println(sql);
         Conexao c = new Conexao();
         c.conectar();
         int insert = c.processaInclusao(sql);
@@ -118,26 +116,28 @@ public class ParticipanteDAO implements IParticipanteDAO{
             	participante.setId(result.getInt("ID_PARTICIPANTE_PK"));
 				participante.setNome(result.getString("NOME_PARTICIPANTE"));
 				participante.setTelefone(result.getString("TEL_PARTICIPANTE"));
-				participante.setEmail(result.getString("TEL_PARTICIPANTE"));
+				participante.setEmail(result.getString("EMAIL_PARTICIPANTE"));
 				participante.setEndereco(result.getString("ENDERECO_PARTICIPANTE"));
 				participante.setCpf(result.getString("CPF_PARTICIPANTE"));
 				participante.setNumInscricao(result.getInt("NUM_INSCRICAO_PARTICIPANTE"));
 				participante.setRevisor(result.getBoolean("REVISOR_PARTICIPANTE"));
 				
-				MunicipioDAO mDAO = new MunicipioDAO();
-				CongressoDAO cDAO = new CongressoDAO();
-				
-				Municipio m = new Municipio();
-				Congresso co = new Congresso();
-				
-				m.setId(result.getInt("MUNICIPIO_ID_FK"));
-				co.setId(result.getInt("CONGRESSO_ID_FK"));
+				System.out.println(participante.getNome() + "3");
 
-				m = mDAO.listarPorId(m);
-				co = cDAO.listarTodos();
+				//MunicipioDAO mDAO = new MunicipioDAO();
+				//CongressoDAO cDAO = new CongressoDAO();
 				
-				participante.setMunicipio(m);
-				participante.setCongresso(co);
+				//Municipio m = new Municipio();
+				//Congresso co = new Congresso();
+				
+				//m.setId(result.getInt("MUNICIPIO_ID_FK"));
+				//co.setId(result.getInt("CONGRESSO_ID_FK"));
+
+				//m = mDAO.listarPorId(m);
+				//co = cDAO.listarTodos();
+				
+				//participante.setMunicipio(m);
+				//participante.setCongresso(co);
             }
             result.close();
             return participante;
