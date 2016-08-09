@@ -25,5 +25,15 @@ public class VinculoParticipanteInstituicao {
 	public void setVinculo(VinculoInstitucional vinculo) {
 		this.vinculo = vinculo;
 	}
+	public void setVinculo(int vinculoId) {
+		if(vinculoId == 1)
+			this.vinculo = VinculoInstitucional.Egresso;
+		else if(vinculoId == 2)
+			this.vinculo = VinculoInstitucional.Discente;
+		else if(vinculoId == 3)
+			this.vinculo = VinculoInstitucional.Docente;
+		else if(vinculoId == 4)
+			this.vinculo = VinculoInstitucional.Pesquisador;
+	}
 
 }

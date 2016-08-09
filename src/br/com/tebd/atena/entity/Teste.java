@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import br.com.tebd.atena.persistence.mysql.AreaConhecimentoDAO;
 import br.com.tebd.atena.persistence.mysql.CongressoDAO;
 import br.com.tebd.atena.persistence.mysql.EstadoDAO;
+import br.com.tebd.atena.persistence.mysql.InstituicaoDAO;
 import br.com.tebd.atena.persistence.mysql.MunicipioDAO;
+import br.com.tebd.atena.persistence.mysql.ParticipanteDAO;
 
 public class Teste {
 	
@@ -44,7 +46,6 @@ public class Teste {
 	}
 	
 	public static void testaAreaConhecimento(){
-		AreaConhecimento area = new AreaConhecimento();
 		AreaConhecimentoDAO t = new AreaConhecimentoDAO();
 		ArrayList<AreaConhecimento> e = new ArrayList<>();
 		
@@ -64,10 +65,29 @@ public class Teste {
 		System.out.println(o.getId()+" " + o.getDataInicio().toString() + " "
 							+ o.getAreaConhecimento().getNome());
 	}
+	
+	public static void testaInstituicao(){
+		InstituicaoDAO t = new InstituicaoDAO();
+		ArrayList<Instituicao> e = new ArrayList<>();
+		e = t.listarTodas();
+			
+		for(int i=0; i< e.size();i++){
+			System.out.println(e.get(i).getNome());
+		}
+	}
+	
+	public static void testaParticipante(){
+		ParticipanteDAO t = new ParticipanteDAO();
+		ArrayList<Participante> e = new ArrayList<>();
+		e = t.listarTodos();
+			
+		for(int i=0; i< e.size();i++){
+			System.out.println(e.get(i).getNome());
+		}
+	}
 
 	public static void main(String[] args) {
-		testaCongresso();
-		
+		testaInstituicao();
 	}
 	
 

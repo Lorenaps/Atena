@@ -33,5 +33,26 @@ public class EstadoDAO implements IEstadoDAO{
         return null;
 	}
 	
+	@Override
+	public Estado listarPorId(Estado estd) {
+		String sql = "select * from atena.estado where ID_ESTADO = "
+				+ estd.getId() + ";";
+        Estado estado = new Estado();
+        Conexao c = new Conexao();
+        c.conectar(); 
+	        try{
+	            ResultSet result = c.processaConsulta(sql);
+	            while (result.next()){
+	                estado.setId(result.getInt("ID_ESTADO"));
+	                estado.setUf(result.getString("UF_ESTADO"));
+	                estado.setNome(result.getString("NOME_ESTADO"));
+	            }
+	            result.close();
+	            return estado;
+	        }catch (SQLException e){
+	
+	        }        
+        return null;
+	}
 
 }

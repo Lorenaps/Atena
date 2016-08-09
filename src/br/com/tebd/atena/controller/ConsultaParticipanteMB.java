@@ -10,8 +10,9 @@ import br.com.tebd.atena.service.CongressoService;
 import br.com.tebd.atena.service.ParticipanteService;
 
 @ManagedBean(name="consultaParticipanteMB")
+@RequestScoped
 public class ConsultaParticipanteMB {
-	private String cpf;
+	private String numInscricao;
 	//private Congresso congresso;
 	//private ArrayList<Congresso> congressos;
 	//private CongressoService cs;
@@ -23,12 +24,12 @@ public class ConsultaParticipanteMB {
 		//this.congressos = this.cs.listarTodosCongressos();
 	}
 
-	public String getCpf() {
-		return cpf;
+	public String getNumInscricao() {
+		return numInscricao;
 	}
 
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
+	public void setNumInscricao(String numInscricao) {
+		this.numInscricao = numInscricao;
 	}
 	/*
 	public Congresso getCongresso() {
@@ -49,7 +50,7 @@ public class ConsultaParticipanteMB {
 	*/
 
 	public String consultar(){
-		if(!this.cpf.isEmpty())	return ConstanteUtil.CADASTRO_PARTICIPANTE+ConstanteUtil.REDIRECT;
+		if(!this.numInscricao.isEmpty())	return ConstanteUtil.CADASTRO_PARTICIPANTE+ConstanteUtil.REDIRECT;
 		
 		return null;
 	}

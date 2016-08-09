@@ -58,5 +58,39 @@ public class MunicipioDAO implements IMunicipioDAO{
 	        }        
         return null;
 	}
+	@Override
+	public Municipio listarPorId(Municipio munic) {
+		String sql = "select * from atena.municipio where ID_MUNICIPIO = "
+				+ munic.getId() + ";";
+		//System.out.println("teste: "+ munic.getId());
+        Municipio municipio = new Municipio();
+        Conexao c = new Conexao();
+        c.conectar(); 
+	        try{
+	            ResultSet result = c.processaConsulta(sql);
+	            while (result.next()){
+	        		//ID_MUNICIPIO, ESTADO_ID_FK, UF_ESTADO, NOME_MUNICIPIO
+
+	                municipio.setId(result.getInt("ID_MUNICIPIO"));
+
+	        		Estado estado = new Estado();
+	        		int i = result.getInt("ESTADO_ID_FK");
+		            estado.setId(i);
+		            EstadoDAO eDAO = new EstadoDAO();
+
+		            municipio.setEstado(eDAO.listarPorId(estado));
+
+	                municipio.setUf(result.getString("UF_ESTADO"));
+
+	                municipio.setNome(result.getString("NOME_MUNICIPIO"));
+	        		System.out.println("teste:" + municipio.getNome());
+	            }
+	            result.close();
+	            return municipio;
+	        }catch (SQLException e){
+	
+	        }        
+        return null;
+	}
 
 }

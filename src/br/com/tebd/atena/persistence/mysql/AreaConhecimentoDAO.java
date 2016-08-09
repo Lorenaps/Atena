@@ -10,7 +10,7 @@ import br.com.tebd.atena.persistence.IAreaConhecimentoDAO;
 public class AreaConhecimentoDAO implements IAreaConhecimentoDAO {
 
 	@Override
-	public ArrayList<br.com.tebd.atena.entity.AreaConhecimento> listarTodas() {
+	public ArrayList<AreaConhecimento> listarTodas() {
 		String sql = "select * from atena.area_conhecimento;";
         ArrayList<AreaConhecimento> areas = new ArrayList<>();
         AreaConhecimento area = new AreaConhecimento();

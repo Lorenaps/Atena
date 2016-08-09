@@ -8,5 +8,5 @@ import br.com.tebd.atena.entity.Municipio;
 public interface IMunicipioDAO {
 	public ArrayList<Municipio> listarTodos();
 	public ArrayList<Municipio> listarMunicipiosPorEstado(Estado estado);
-
+	public Municipio listarPorId(Municipio munic);
 }

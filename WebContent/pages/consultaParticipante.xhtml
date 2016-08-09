@@ -18,14 +18,14 @@
 		<h:form>
 			<h:panelGrid style="margin-top:100px" columns="2">
 
-				<h:outputLabel value="CPF: " for="cpf" />
-				<p:inputText id="cpf"
-					value="#{consultaParticipanteMB.cpf}" required="true" />
+				<h:outputLabel value="Número de Inscrição: " for="num" />
+				<p:inputText id="num"
+					value="#{consultaParticipanteMB.numInscricao}" required="true" />
 			</h:panelGrid>
 			<h:panelGrid style="margin-top:20px" columns="2">
 				<p:commandButton value="Consultar"
 					action="#{consultaParticipanteMB.consultar}" actionListener="#{cadastroParticipanteMB.consultaListener}">
-					<f:attribute name="ParticipanteCPF" value="#{consultaParticipanteMB.cpf}"/>
+					<f:attribute name="inscricao" value="#{consultaParticipanteMB.numInscricao}"/>
 				</p:commandButton>
 			</h:panelGrid>
 		</h:form>

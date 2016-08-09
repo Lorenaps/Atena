@@ -6,4 +6,6 @@ import br.com.tebd.atena.entity.Estado;
 
 public interface IEstadoDAO {
 	public ArrayList<Estado> listarTodos();
+	public Estado listarPorId(Estado e);
+
 }

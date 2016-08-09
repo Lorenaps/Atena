@@ -1,12 +1,21 @@
 package br.com.tebd.atena.persistence.mysql;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
+import br.com.tebd.atena.entity.AreaConhecimento;
+import br.com.tebd.atena.entity.Congresso;
+import br.com.tebd.atena.entity.Municipio;
+import br.com.tebd.atena.entity.Participante;
+
 public class ParticipanteDAO {
 	
 	public boolean inserir(Bebida bebida){
-        String sql1, sql2;
+        String sql;
          
-        sql1 = "select max(codProduto) from delivery.produto where tipoProduto='BEBIDA'";
-
+        sql1 = "insert into delivery.bebida(codBebida_Produto, fornecedor) values ("
+                +bebida.getCodigo()+",'"+bebida.getFornecedor()+"');";
         Banco b = new Banco();
         
         try{
@@ -33,21 +42,6 @@ public class ParticipanteDAO {
         return false;
     }
     
-    public boolean deletarBebida(Bebida b){
-        String sql;
-        int tipo;
-        
-        sql = "delete from delivery.bebida where codBebida_produto ="+b.getCodigo()+";";
-        Banco banco = new Banco();
-        banco.conectar();
-        
-        int exclusao = banco.processaInclusao(sql);
-        if(exclusao > 0){
-            return true;
-        }
-        return false;                
-    }
-    
     public boolean alterarBebida(Bebida b){
         String sql;
        
@@ -62,63 +56,71 @@ public class ParticipanteDAO {
         return false;                
     }
     
-    //Retorna todos os dados debebida
-    public ArrayList<Bebida> consultar(){
-    
-        String sql = "select * from delivery.produto P inner join delivery.bebida B on P.codProduto = B.codBebida_Produto;";
-        ArrayList<Bebida> bebidas = new ArrayList<>();
-        Bebida bebida;
-        
-        Banco b = new Banco();
-        b.conectar();
-        
+    public ArrayList<AreaConhecimento> listarTodas() {
+		String sql = "select * from atena.area_conhecimento;";
+        ArrayList<AreaConhecimento> areas = new ArrayList<>();
+        AreaConhecimento area = new AreaConhecimento();
+        Conexao c = new Conexao();
+        c.conectar(); 
+	        try{
+	            ResultSet result = c.processaConsulta(sql);
+	            while (result.next()){
+	                area = new AreaConhecimento();
+	                area.setId(result.getInt("ID_AREA_CONHECIMENTO"));
+	                area.setNome(result.getString("NOME_AREA_CONHECIMENTO"));
+	                area.setCodigo(result.getString("COD_AREA_CONHECIMENTO"));
+	                areas.add(area);
+	            }
+	            result.close();
+	            return areas;
+	        }catch (SQLException e){
+	
+	        }        
+        return null;
+	}
+	
+	public Participante listarPorId(Participante p){
+	String sql = "select * from atena.participante where ID_PARTICIPANTE = "
+			+ p.getNumInscricao()+";";
+	Participante participante = new Participante();    
+	Conexao c = new Conexao();
+    c.conectar(); 
         try{
-            ResultSet result = b.processaConsulta(sql);
-        
+            ResultSet result = c.processaConsulta(sql);
             while (result.next()){
-                bebida = new Bebida();
-                bebida.setNome(result.getString("nomeProduto"));
-                bebida.setCodigo(result.getInt("codProduto"));
-                bebida.setFornecedor(result.getString("fornecedor"));
-                bebida.setTamanho(result.getString("tamanhoProduto"));
-                bebida.setTipo(result.getString("tipoProduto"));
-                bebida.setPreco(result.getDouble("valorProduto"));
-                bebidas.add(bebida);
+ID_PARTICIPANTE_PK, NOME_PARTICIPANTE, TEL_PARTICIPANTE, EMAIL_PARTICIPANTE, 
+ENDERECO_PARTICIPANTE, CPF_PARTICIPANTE, NUM_INSCRICAO_PARTICIPANTE, 
+REVISOR_PARTICIPANTE, MUNICIPIO_ID_FK, CONGRESSO_ID_FK 
+
+
+            	participante.setId(result.getInt("ID_PARTICIPANTE_PK"));
+				participante.setNome(result.getString("NOME_PARTICIPANTE"));
+				participante.setTelefone(result.getString("TEL_PARTICIPANTE"));
+				participante.setEmail(result.getString("TEL_PARTICIPANTE"));
+				participante.setEndereco(result.getString("ENDERECO_PARTICIPANTE"));
+				participante.setCpf(result.getString("CPF_PARTICIPANTE"));
+				participante.setNumInscricao(result.getInt("NUM_INSCRICAO_PARTICIPANTE"));
+				participante.setRevisor(result.getBoolean("REVISOR_PARTICIPANTE"));
+				
+				MunicipioDAO mDAO = new MunicipioDAO();
+				CongressoDAO cDAO = new CongressoDAO();
+				
+				Municipio m = new Municipio();
+				Congresso c = new Congresso();
+				
+				m.setId(result.getInt("MUNICIPIO_ID_FK"));
+				c.setId(result.getInt("MUNICIPIO_ID_FK"));
+
+
+
             }
             result.close();
-            return bebidas;
+            return area;
         }catch (SQLException e){
 
         }        
-        return null;
-    }
-    
-    public Bebida consultarBebida(int cod){
-    
-        String sql = "select * from delivery.produto P inner join delivery.bebida B on P.codProduto = B.codBebida_Produto where codProduto="+cod+";";
-        Bebida bebida = new Bebida();
-        
-        Banco b = new Banco();
-        b.conectar();
-        
-        try{
-            ResultSet result = b.processaConsulta(sql);
-        
-            while (result.next()){
-                bebida = new Bebida();
-                bebida.setNome(result.getString("nomeProduto"));
-                bebida.setCodigo(result.getInt("codProduto"));
-                bebida.setFornecedor(result.getString("fornecedor"));
-                bebida.setTamanho(result.getString("tamanhoProduto"));
-                bebida.setTipo(result.getString("tipoProduto"));
-                bebida.setPreco(result.getDouble("valorProduto"));
-            }
-            result.close();
-            return bebida;
-        }catch (SQLException e){
+    return null;
+	}
 
-        }        
-        return null;
-    }
 
 }
