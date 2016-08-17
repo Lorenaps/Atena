@@ -31,5 +31,13 @@ public class Municipio {
 		this.estado = estado;
 	}
 	
+	public String toString(){
+		return this.nome;
+	}
 	
+	public boolean equals(Object municipio){
+		Municipio m = (Municipio) municipio;
+		if(this.nome.equals(m.getNome()))	return true;
+		return false;
+	}
 }

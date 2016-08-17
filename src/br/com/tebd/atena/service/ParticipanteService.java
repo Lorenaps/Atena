@@ -17,10 +17,7 @@ public class ParticipanteService {
 	}
 		
 	public Participante buscarParticipantePorNumInscricao(String numInscricao){
-		Participante p = this.participanteDAO.buscarParticipantePorNumInscricao(numInscricao);
-
-		System.out.println(p.getNome() + "2");
-		
+		Participante p = this.participanteDAO.buscarParticipantePorNumInscricao(numInscricao);		
 		return p;
 	}
 }

@@ -8,49 +8,49 @@
 <h:head>
 	<meta http-equiv="Content-Type"
 		content="Label/html; charset=ISO-8859-1" />
-	<title>Realização de Cadastro</title>
+	<title>Cadastro</title>
 </h:head>
 <h:body>
 
 	<h1>CADASTRO DE PARTICIPANTE</h1>
 
 	<div align="center">
-		<h:form>
+		<h:form id="form">
 			<h:panelGrid style="margin-top:100px" columns="2">
 
 				<h:outputLabel value="Nome Completo: " for="nomeCompleto" />
 				<p:inputText id="nomeCompleto"
-					value="#{cadastroParticipanteMB.participante.nome}" required="true"
-					disabled="#{cadastroParticipanteMB.consulta}" />
+					value="#{cadastroParticipanteMB.participante.nome}" />
+					
 				<h:outputLabel value="CPF: " for="cpf" />
-				<p:inputText id="cpf"
-					value="#{cadastroParticipanteMB.participante.cpf}"
-					disabled="#{cadastroParticipanteMB.consulta}" />
-				<h:outputLabel value="Telefone: " for="telefone" />
-				<p:inputText id="telefone"
-					value="#{cadastroParticipanteMB.participante.telefone}"
-					disabled="#{cadastroParticipanteMB.consulta}" />
+				<p:inputText id="cpf" 
+					value="#{cadastroParticipanteMB.participante.cpf}" />
+									
+				<h:outputLabel value="Município" for="municipio" />
+				<p:selectOneMenu id="municipio"
+					value="#{cadastroParticipanteMB.municipio.id}">
+					<f:selectItem itemValue="#{null}" itemLabel="-- Selecione --" />
+					<f:selectItems var="mun" itemValue="#{mun.id}" value="#{cadastroParticipanteMB.municipios}" />
+				</p:selectOneMenu>
+				
 				<p:outputLabel value="Endereço: " for="endereco" />
 				<p:inputText id="endereco"
-					value="#{cadastroParticipanteMB.participante.endereco}"
-					disabled="#{cadastroParticipanteMB.consulta}" />
+					value="#{cadastroParticipanteMB.participante.endereco}" />
+				<h:outputLabel value="Telefone: " for="telefone" />
+				<p:inputText id="telefone"
+					value="#{cadastroParticipanteMB.participante.telefone}" />
 				<p:outputLabel value="E-mail: " for="email" />
 				<p:inputText id="email"
-					value="#{cadastroParticipanteMB.participante.email}"
-					disabled="#{cadastroParticipanteMB.consulta}" />
+					value="#{cadastroParticipanteMB.participante.email}" />
 				<h:outputLabel value="Revisor? " for="revisor" />
 				<p:selectBooleanCheckbox id="revisor"
-					value="#{cadastroParticipanteMB.participante.revisor}"
-					disabled="#{cadastroParticipanteMB.consulta}" />
+					value="#{cadastroParticipanteMB.participante.revisor}" />
 			</h:panelGrid>
 			<h:panelGrid style="margin-top:20px" columns="2">
 				<p:commandButton value="Cadastrar"
-					action="#{cadastroParticipanteMB.cadastrar}" />
-
-				<br />
-				<br />
-				<h:commandLink value="Voltar" action="consultaParticipante"
-					rendered="#{cadastroParticipanteMB.consulta}" />
+					action="#{cadastroParticipanteMB.cadastrar}" rendered="#{not cadastroParticipanteMB.consulta}"/>
+				<p:commandButton value="Alterar" rendered="#{cadastroParticipanteMB.consulta}"/>
+				<p:commandButton value="Voltar" action="consultaParticipante" rendered="#{cadastroParticipanteMB.consulta}"/>
 			</h:panelGrid>
 
 		</h:form>

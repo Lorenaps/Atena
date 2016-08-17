@@ -23,9 +23,9 @@ public class ParticipanteDAO implements IParticipanteDAO{
 		        + "'" + p.getEmail() + "',"
 		        + "'" + p.getEndereco() + "',"
 		        + "'" + p.getCpf() + "',"
-		        + "80000" + ","
+		        + p.getNumInscricao() + ","
 		        + p.isRevisor() + ","
-		        + "300" + ","
+		        + p.getMunicipio().getId() + ","
 		        + "1" +");";
         
         Conexao c = new Conexao();
@@ -122,21 +122,19 @@ public class ParticipanteDAO implements IParticipanteDAO{
 				participante.setNumInscricao(result.getInt("NUM_INSCRICAO_PARTICIPANTE"));
 				participante.setRevisor(result.getBoolean("REVISOR_PARTICIPANTE"));
 				
-				System.out.println(participante.getNome() + "3");
-
-				//MunicipioDAO mDAO = new MunicipioDAO();
+				MunicipioDAO mDAO = new MunicipioDAO();
 				//CongressoDAO cDAO = new CongressoDAO();
 				
-				//Municipio m = new Municipio();
+				Municipio m = new Municipio();
 				//Congresso co = new Congresso();
 				
-				//m.setId(result.getInt("MUNICIPIO_ID_FK"));
+				m.setId(result.getInt("MUNICIPIO_ID_FK"));
 				//co.setId(result.getInt("CONGRESSO_ID_FK"));
 
-				//m = mDAO.listarPorId(m);
+				m = mDAO.listarPorId(m);
 				//co = cDAO.listarTodos();
 				
-				//participante.setMunicipio(m);
+				participante.setMunicipio(m);
 				//participante.setCongresso(co);
             }
             result.close();

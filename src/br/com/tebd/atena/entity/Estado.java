@@ -24,5 +24,7 @@ public class Estado {
 		this.nome = nome;
 	}
 	
-	
+	public String toString(){
+		return this.nome;
+	}
 }
